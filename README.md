@@ -2,7 +2,7 @@
 
 **Prueba Técnica con React.js**
 
-Este proyecto es una versión mejorada y funcional del marketplace simple, con una nueva API y código actualizado
+Este proyecto es una versión mejorada y funcional del marketplace simple, para la prueba técnica del curso de platzi.
 
 ## 🚀 ¿Cómo empezar?
 
