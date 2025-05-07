@@ -62,7 +62,7 @@ export const ShoppingCartProvider = ({children}) => {
   const [searchByTitle, setSearchByTitle] = useState(null)
 
   // Get products by category
-  const [searchByCategory, setSearchByCategory] = useState(null)
+  const [searchByCategory, setSearchByCategory] = useState("")
 
   const currentDate = new Date().toLocaleDateString('en-US')
 
@@ -74,6 +74,7 @@ export const ShoppingCartProvider = ({children}) => {
   }, [])
 
   const filteredItemsByTitle = (items, searchByTitle) => {
+    if (!searchByTitle) return items;
     return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
   }
 
@@ -104,8 +105,8 @@ export const ShoppingCartProvider = ({children}) => {
     }
   }
 
-  useEffect(() => {
-    if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
+  useEffect(() => {    
+    if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory));
     if (searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
     if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
     if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
